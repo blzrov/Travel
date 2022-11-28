@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 
 import Like from "../components/Like";
 
+import Gallery from "../components/Gallery";
+
 export default function Travel() {
   return (
     <div>
@@ -14,9 +16,12 @@ export default function Travel() {
             <div className="img-travel-bg"></div>
             <Like />
             <div className="img-travel-content">
-              <h3>Свердловская область</h3>
-              <div>Краткое описание локации</div>
-              <div>Лайк</div>
+              <h3>Река Исеть</h3>
+              <div>
+                Река на Урале и в Западной Сибири, левый приток реки Тобол.
+                Протекает по территории Свердловской, Тюменской и Курганской
+                областей.
+              </div>
             </div>
           </div>
         </Col>
@@ -24,6 +29,7 @@ export default function Travel() {
           <div className="img-travel-aside">
             <div>Организатор: Организатор</div>
             <div>Даты: 01.01.2000 - 02.12.2001</div>
+            <div>Проводник: Вася Петров</div>
             <div>Стоимость: 19 000 ₽</div>
           </div>
         </Col>
@@ -31,7 +37,7 @@ export default function Travel() {
       <br />
       <Row>
         <Col>
-          <h2>Поход на синие камни</h2>
+          <h2>Сплав по реке Исеть</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -41,7 +47,7 @@ export default function Travel() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <div>Галерея</div>
+          <Gallery />
           <div>Отзывы // Вопросы и ответы</div>
         </Col>
       </Row>

@@ -6,6 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
+import PickDate from "../components/PickDate";
 
 export default function PickTour() {
   return (
@@ -17,12 +20,12 @@ export default function PickTour() {
               <h5>Даты</h5>
               <Row>
                 <Col xs={6}>
-                  <Form.Label>Старт не позднее:</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <Form.Label>Начало не раньше:</Form.Label>
+                  <PickDate />
                 </Col>
                 <Col xs={6}>
                   <Form.Label>Финиш не позднее:</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <PickDate />
                 </Col>
               </Row>
             </Form.Group>
@@ -32,11 +35,11 @@ export default function PickTour() {
               <Row>
                 <Col xs={6}>
                   <Form.Label>От</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <Form.Control type="number" placeholder="" />
                 </Col>
                 <Col xs={6}>
                   <Form.Label>До</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <Form.Control type="number" placeholder="" />
                 </Col>
               </Row>
             </Form.Group>
@@ -46,14 +49,17 @@ export default function PickTour() {
               <Row>
                 <Col xs={6}>
                   <Form.Label>От</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <Form.Control type="number" placeholder="" />
                 </Col>
                 <Col xs={6}>
                   <Form.Label>До</Form.Label>
-                  <Form.Control type="" placeholder="" />
+                  <Form.Control type="number" placeholder="" />
                 </Col>
               </Row>
             </Form.Group>
+            <Button variant="success" type="submit">
+              Найти
+            </Button>
           </Form>
         </Col>
 

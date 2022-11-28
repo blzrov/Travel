@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import PickDate from "../components/PickDate";
+
 export default function Help() {
   return (
     <div>
@@ -19,18 +21,18 @@ export default function Help() {
               <Form.Label>Фамилия</Form.Label>
               <Form.Control type="" placeholder="" />
               <Form.Label>Дата рождения</Form.Label>
-              <Form.Control type="" placeholder="" />
+              <PickDate />
               <Form.Label>Пол</Form.Label>
               <Form.Control type="" placeholder="" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <h5>Контактная информация</h5>
               <Form.Label>Номер телефона</Form.Label>
-              <Form.Control type="" placeholder="" />
+              <Form.Control type="number" placeholder="" />
               <Form.Label>Город</Form.Label>
               <Form.Control type="" placeholder="" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
               Сохранить
             </Button>
           </Form>
