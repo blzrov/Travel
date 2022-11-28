@@ -5,6 +5,7 @@ import Help from "./pages/Help";
 import Organizers from "./pages/Organizers";
 import Travels from "./pages/Travels";
 import PickTour from "./pages/PickTour";
+import Profile from "./pages/Profile";
 
 import Travel from "./examples/Travel";
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/Travels" element={<Travels />} />
             <Route path="/PickTour" element={<PickTour />} />
             <Route path="/PickTour" element={<PickTour />} />
+            <Route path="/Profile" element={<Profile />} />
             <Route path="/PickTour/1" element={<Travel />} />
             <Route path="/Travels/1" element={<Travel />} />
             <Route path="/" element={<Login />} />

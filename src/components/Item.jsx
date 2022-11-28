@@ -12,7 +12,7 @@ export default function Item() {
   const [isLike, setIsLike] = React.useState(false);
 
   function onClick() {
-    window.location = "http://localhost:3000/PickTour/1";
+    window.location = "https://all-travel.netlify.app/travels/1";
   }
 
   return (
