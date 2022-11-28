@@ -3,13 +3,18 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import Like from "../components/Like";
+
 export default function Help() {
+  const [isLike, setIsLike] = React.useState(false);
+
   return (
     <div>
       <Row>
         <Col sm={12} md={6}>
           <div className="img-travel">
             <div className="img-travel-bg"></div>
+            <Like />
             <div className="img-travel-content">
               <h3>Свердловская область</h3>
               <div>Краткое описание локации</div>
