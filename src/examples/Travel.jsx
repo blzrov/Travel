@@ -5,9 +5,7 @@ import Col from "react-bootstrap/Col";
 
 import Like from "../components/Like";
 
-export default function Help() {
-  const [isLike, setIsLike] = React.useState(false);
-
+export default function Travel() {
   return (
     <div>
       <Row>
