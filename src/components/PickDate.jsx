@@ -15,7 +15,9 @@ export default function Organizers({ value, setValue }) {
           onChange={(newValue) => {
             setValue(newValue);
           }}
-          renderInput={(params) => <TextField size="small" {...params} />}
+          renderInput={(params) => (
+            <TextField fullWidth size="small" {...params} />
+          )}
         />
       </LocalizationProvider>
     </div>

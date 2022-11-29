@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
 
 export default function Organizers() {
   return (
@@ -16,6 +17,8 @@ export default function Organizers() {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <h5>Создать путешествие</h5>
+              <Form.Label>Регион</Form.Label>
+              <PickRegion />
               <Form.Label>Название</Form.Label>
               <Form.Control type="" placeholder="" />
               <Form.Label>Локация</Form.Label>
@@ -40,13 +43,6 @@ export default function Organizers() {
               <Form.Control as="textarea" rows={3} />
               <Form.Label>Стоимость</Form.Label>
               <Form.Control type="number" placeholder="" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <h5>Контактная информация</h5>
-              <Form.Label>Номер телефона</Form.Label>
-              <Form.Control type="" placeholder="" />
-              <Form.Label>Город</Form.Label>
-              <Form.Control type="" placeholder="" />
             </Form.Group>
             <Button variant="primary" type="submit">
               Создать

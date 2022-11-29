@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
 
 export default function PickTour() {
   return (
@@ -16,6 +17,10 @@ export default function PickTour() {
       <Row>
         <Col xs={12} md={3}>
           <Form>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <h5>Регион</h5>
+              <PickRegion />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <h5>Даты</h5>
               <Row>

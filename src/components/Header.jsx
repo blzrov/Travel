@@ -81,15 +81,13 @@ export default function Header() {
               Профиль
             </NavLink>
 
-            <NavDropdown title="Примеры" id="basic-nav-dropdown">
-              <NavLink
-                className="NavLink"
-                to="/travels/1"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Путешествие
-              </NavLink>
-            </NavDropdown>
+            <NavLink
+              className="NavLink"
+              to="/travels/1"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Travel
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

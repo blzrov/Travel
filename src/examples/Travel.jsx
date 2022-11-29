@@ -27,6 +27,7 @@ export default function Travel() {
         </Col>
         <Col sm={12} md={6}>
           <div className="img-travel-aside">
+            <div>Регион: Регион</div>
             <div>Организатор: Организатор</div>
             <div>Даты: 01.01.2000 - 02.12.2001</div>
             <div>Проводник: Вася Петров</div>

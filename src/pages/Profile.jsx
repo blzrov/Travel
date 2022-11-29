@@ -7,7 +7,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
 
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 export default function Help() {
   return (
     <div>
@@ -22,15 +26,35 @@ export default function Help() {
               <Form.Control type="" placeholder="" />
               <Form.Label>Дата рождения</Form.Label>
               <PickDate />
-              <Form.Label>Пол</Form.Label>
-              <Form.Control type="" placeholder="" />
+              <Form.Label className="mb-0">Пол</Form.Label>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="male"
+                  control={<Radio size="small" />}
+                  label="Мужской"
+                />
+                <FormControlLabel
+                  value="female"
+                  control={<Radio size="small" />}
+                  label="Женский"
+                />
+                <FormControlLabel
+                  value="other"
+                  control={<Radio size="small" />}
+                  label="Other"
+                />
+              </RadioGroup>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <h5>Контактная информация</h5>
               <Form.Label>Номер телефона</Form.Label>
               <Form.Control type="number" placeholder="" />
-              <Form.Label>Город</Form.Label>
-              <Form.Control type="" placeholder="" />
+              <Form.Label>Регион</Form.Label>
+              <PickRegion />
             </Form.Group>
             <Button variant="success" type="submit">
               Сохранить
