@@ -41,7 +41,7 @@ export default function Organizers() {
               </Row>
               <Form.Label>Подробное описание путешествия</Form.Label>
               <Form.Control as="textarea" rows={3} />
-              <Form.Label>Стоимость</Form.Label>
+              <Form.Label>Затраты</Form.Label>
               <Form.Control type="number" placeholder="" />
             </Form.Group>
             <Button variant="primary" type="submit">

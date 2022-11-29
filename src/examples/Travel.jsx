@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 
 import Like from "../components/Like";
 import Gallery from "../components/Gallery";
+import TravelTabs from "../components/TravelTabs";
 
 import "./Travel.less";
 
@@ -32,7 +33,7 @@ export default function Travel() {
             <div>Организатор: Организатор</div>
             <div>Даты: 01.01.2000 - 02.12.2001</div>
             <div>Проводник: Вася Петров</div>
-            <div>Стоимость: 19 000 ₽</div>
+            <div>Затраты: 19 000 ₽</div>
           </div>
         </Col>
       </Row>
@@ -50,7 +51,9 @@ export default function Travel() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <Gallery />
-          <div>Отзывы // Вопросы и ответы</div>
+          <div>
+            <TravelTabs />
+          </div>
         </Col>
       </Row>
     </div>
