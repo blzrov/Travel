@@ -5,7 +5,7 @@ export default function Gallery() {
     <Carousel slide={false}>
       <Carousel.Item>
         <img
-          className="d-block w-100 img-gallery"
+          className="d-block w-100 gallery-img"
           src={require("../img/altai.jpg")}
           alt="First slide"
         />
@@ -16,7 +16,7 @@ export default function Gallery() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100 img-gallery"
+          className="d-block w-100 gallery-img"
           src={require("../img/altai.jpg")}
           alt="Second slide"
         />
@@ -28,7 +28,7 @@ export default function Gallery() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100 img-gallery"
+          className="d-block w-100 gallery-img"
           src={require("../img/altai.jpg")}
           alt="Third slide"
         />

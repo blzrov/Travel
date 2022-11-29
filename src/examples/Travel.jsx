@@ -4,15 +4,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Like from "../components/Like";
-
 import Gallery from "../components/Gallery";
+
+import "./Travel.less";
 
 export default function Travel() {
   return (
     <div>
       <Row>
         <Col sm={12} md={6}>
-          <div className="img-travel">
+          <div className="travel-img-wrapper">
             <div className="img-travel-bg"></div>
             <Like />
             <div className="img-travel-content">
@@ -26,7 +27,7 @@ export default function Travel() {
           </div>
         </Col>
         <Col sm={12} md={6}>
-          <div className="img-travel-aside">
+          <div className="travel-img-aside">
             <div>Регион: Регион</div>
             <div>Организатор: Организатор</div>
             <div>Даты: 01.01.2000 - 02.12.2001</div>

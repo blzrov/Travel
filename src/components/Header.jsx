@@ -1,14 +1,15 @@
 import React from "react";
 
+import "./Header.less";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import logo from "../img/logo.svg";
-import "./Header.less";
 
 export default function Header() {
   const activeStyle = { textDecoration: "underline" };
+  const style = ({ isActive }) => (isActive ? activeStyle : undefined);
 
   return (
     <Navbar collapseOnSelect expand="lg">
@@ -25,67 +26,35 @@ export default function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
-            <NavLink
-              className="NavLink"
-              to="/PickTour"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/PickTour" style={style}>
               Подобрать тур
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Travels"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Travels" style={style}>
               Путешествия
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Organizers"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Organizers" style={style}>
               Организаторам
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Help"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Help" style={style}>
               Помощь
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Favorites"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Favorites" style={style}>
               Избранное
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Login"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Login" style={style}>
               Вход
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/Profile"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/Profile" style={style}>
               Профиль
             </NavLink>
 
-            <NavLink
-              className="NavLink"
-              to="/travels/1"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
+            <NavLink className="NavLink" to="/travels/1" style={style}>
               Travel
             </NavLink>
           </Nav>

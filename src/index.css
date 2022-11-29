@@ -1,13 +1,1 @@
 @import url("https://fonts.googleapis.com/css?family=Inter");
-
-* {
-  font-family: "Inter";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.img-gallery {
-  object-fit: cover;
-  height: 500px;
-}

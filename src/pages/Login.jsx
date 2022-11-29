@@ -1,14 +1,16 @@
-import * as React from "react";
+import React, { useState } from "react";
 
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import "./Login.less";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 export default function Login() {
-  const [login, setLogin] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
 
   function onClick() {
     console.log({ login, password });

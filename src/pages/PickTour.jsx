@@ -1,7 +1,5 @@
 import React from "react";
 
-import Item from "../components/Item";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -10,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
+import Item from "../components/Item";
 
 export default function PickTour() {
   return (

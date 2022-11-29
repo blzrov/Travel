@@ -1,0 +1,27 @@
+.login-wrapper {
+  height: 90vh;
+  position: relative;
+  text-align: center;
+  background-image: url("../img/login.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  .login {
+    position: absolute;
+    right: 10%;
+    top: 40%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .login-wrapper {
+    height: 85vh;
+    text-align: center;
+    background-image: none;
+  }
+
+  .login {
+    position: relative;
+    right: unset;
+    top: 40%;
+  }
+}
