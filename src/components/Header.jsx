@@ -1,14 +1,15 @@
+import React from "react";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
 import { NavLink } from "react-router-dom";
-
 import logo from "../img/logo.svg";
-
-const activeStyle = { textDecoration: "underline" };
+import "./Header.less";
 
 export default function Header() {
+  const activeStyle = { textDecoration: "underline" };
+
   return (
     <Navbar collapseOnSelect expand="lg">
       <Container>

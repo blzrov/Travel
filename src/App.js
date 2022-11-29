@@ -9,7 +9,7 @@ import Profile from "./pages/Profile";
 
 import Travel from "./examples/Travel";
 
-import "./App.css";
+import "./App.less";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
