@@ -13,7 +13,7 @@ export default function Item() {
   }
 
   return (
-    <Card>
+    <Card style={{ minWidth: "300px" }}>
       <div
         className="card-img-bg"
         style={{
@@ -24,7 +24,7 @@ export default function Item() {
       <Card.Body style={{ position: "relative", color: "white" }}>
         <Card.Title>Камчатка</Card.Title>
         <Card.Text>Поход вокруг Толбачика</Card.Text>
-        <Card.Text>Даты: 01.01.2000 - 02.12.2001</Card.Text>
+        <Card.Text>01.01.2000 - 02.12.2001</Card.Text>
         <Card.Text>19 000 ₽</Card.Text>
         <Button onClick={onClick} variant="primary">
           Подробнее

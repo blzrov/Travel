@@ -5,7 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 export default function Gallery() {
   return (
-    <Carousel slide={false}>
+    <Carousel interval={null}>
       <Carousel.Item>
         <img
           className="d-block w-100 gallery-img"
@@ -13,8 +13,8 @@ export default function Gallery() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Галерея</h3>
+          <p>Описание к картинке</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -37,10 +37,8 @@ export default function Gallery() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>{}</h3>
+          <p></p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

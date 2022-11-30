@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./Header.less";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,8 +7,8 @@ import { NavLink } from "react-router-dom";
 import logo from "../img/logo.svg";
 
 export default function Header() {
-  const activeStyle = { textDecoration: "underline" };
-  const style = ({ isActive }) => (isActive ? activeStyle : undefined);
+  const style = ({ isActive }) =>
+    isActive ? { textDecoration: "underline" } : { textDecoration: "none" };
 
   return (
     <Navbar collapseOnSelect expand="lg">
@@ -24,37 +23,40 @@ export default function Header() {
           />
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end"
+        >
           <Nav>
-            <NavLink className="NavLink" to="/PickTour" style={style}>
+            <NavLink className="NavLink mx-2" to="/PickTour" style={style}>
               Подобрать тур
             </NavLink>
 
-            <NavLink className="NavLink" to="/Travels" style={style}>
+            <NavLink className="NavLink mx-2" to="/Travels" style={style}>
               Путешествия
             </NavLink>
 
-            <NavLink className="NavLink" to="/Organizers" style={style}>
+            <NavLink className="NavLink mx-2" to="/Organizers" style={style}>
               Организаторам
             </NavLink>
 
-            <NavLink className="NavLink" to="/Help" style={style}>
+            <NavLink className="NavLink mx-2" to="/Help" style={style}>
               Помощь
             </NavLink>
 
-            <NavLink className="NavLink" to="/Favorites" style={style}>
+            <NavLink className="NavLink mx-2" to="/Favorites" style={style}>
               Избранное
             </NavLink>
 
-            <NavLink className="NavLink" to="/Login" style={style}>
+            <NavLink className="NavLink mx-2" to="/Login" style={style}>
               Вход
             </NavLink>
 
-            <NavLink className="NavLink" to="/Profile" style={style}>
+            <NavLink className="NavLink mx-2" to="/Profile" style={style}>
               Профиль
             </NavLink>
 
-            <NavLink className="NavLink" to="/travels/1" style={style}>
+            <NavLink className="NavLink mx-2" to="/travels/1" style={style}>
               Travel
             </NavLink>
           </Nav>

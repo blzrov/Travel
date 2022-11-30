@@ -11,7 +11,7 @@ import "./Travel.less";
 
 export default function Travel() {
   return (
-    <div>
+    <div className="mb-5">
       <Row>
         <Col sm={12} md={6}>
           <div className="travel-img-wrapper">
@@ -51,9 +51,7 @@ export default function Travel() {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <Gallery />
-          <div>
-            <TravelTabs />
-          </div>
+          <TravelTabs />
         </Col>
       </Row>
     </div>
