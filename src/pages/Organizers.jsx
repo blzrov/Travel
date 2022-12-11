@@ -42,58 +42,57 @@ export default function Organizers() {
       body: JSON.stringify(travel),
     });
     const result = await response.json();
+    console.log(result);
   };
 
   return (
-    <div>
-      <Row>
-        <Col md={8} className="m-auto">
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <h5>Создать путешествие</h5>
-              <Form.Label>Регион</Form.Label>
-              <PickRegion onChange={(e) => setRegion(e.target.value)} />
-              <Form.Label>Название</Form.Label>
-              <Form.Control onChange={(e) => setName(e.target.value)} />
-              <Form.Label>Локация</Form.Label>
-              <Form.Control onChange={(e) => setPlace(e.target.value)} />
-              <Form.Label>Описание локации</Form.Label>
-              <Form.Control
-                onChange={(e) => setPlaceDescription(e.target.value)}
-              />
-              <Form.Label>Организатор</Form.Label>
-              <Form.Control onChange={(e) => setOrganizer(e.target.value)} />
-              <Form.Label>Гид</Form.Label>
-              <Form.Control onChange={(e) => setGuide(e.target.value)} />
-              <Row>
-                <Col xs={6}>
-                  <Form.Label>Дата старта</Form.Label>
-                  <PickDate value={start} onChange={(e) => setStart(e)} />
-                </Col>
-                <Col xs={6}>
-                  <Form.Label>Дата финиша</Form.Label>
-                  <PickDate value={finish} onChange={(e) => setFinish(e)} />
-                </Col>
-              </Row>
-              <Form.Label>Подробное описание путешествия</Form.Label>
-              <Form.Control
-                onChange={(e) => setDescription(e.target.value)}
-                as="textarea"
-                rows={3}
-              />
-              <Form.Label>Затраты</Form.Label>
-              <Form.Control
-                onChange={(e) => setCost(e.target.value)}
-                type="number"
-                placeholder=""
-              />
-            </Form.Group>
-            <Button onClick={postTravel} variant="primary" type="button">
-              Создать
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </div>
+    <Row>
+      <Col md={8} className="m-auto">
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <h5>Создать путешествие</h5>
+            <Form.Label>Регион</Form.Label>
+            <PickRegion onChange={(e) => setRegion(e.target.value)} />
+            <Form.Label>Название</Form.Label>
+            <Form.Control onChange={(e) => setName(e.target.value)} />
+            <Form.Label>Локация</Form.Label>
+            <Form.Control onChange={(e) => setPlace(e.target.value)} />
+            <Form.Label>Описание локации</Form.Label>
+            <Form.Control
+              onChange={(e) => setPlaceDescription(e.target.value)}
+            />
+            <Form.Label>Организатор</Form.Label>
+            <Form.Control onChange={(e) => setOrganizer(e.target.value)} />
+            <Form.Label>Гид</Form.Label>
+            <Form.Control onChange={(e) => setGuide(e.target.value)} />
+            <Row>
+              <Col xs={6}>
+                <Form.Label>Дата старта</Form.Label>
+                <PickDate value={start} onChange={(e) => setStart(e)} />
+              </Col>
+              <Col xs={6}>
+                <Form.Label>Дата финиша</Form.Label>
+                <PickDate value={finish} onChange={(e) => setFinish(e)} />
+              </Col>
+            </Row>
+            <Form.Label>Подробное описание путешествия</Form.Label>
+            <Form.Control
+              onChange={(e) => setDescription(e.target.value)}
+              as="textarea"
+              rows={3}
+            />
+            <Form.Label>Затраты</Form.Label>
+            <Form.Control
+              onChange={(e) => setCost(e.target.value)}
+              type="number"
+              placeholder=""
+            />
+          </Form.Group>
+          <Button onClick={postTravel} variant="primary" type="button">
+            Создать
+          </Button>
+        </Form>
+      </Col>
+    </Row>
   );
 }

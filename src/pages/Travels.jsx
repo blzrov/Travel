@@ -14,14 +14,14 @@ export default function Travels() {
 
   React.useEffect(() => {
     async function getFuture() {
-      const response = await fetch("http://localhost:8080/future");
+      const response = await fetch("http://localhost:8080/future/1");
       const result = await response.json();
       console.log(result);
       setTravels(result);
     }
 
     async function getHistory() {
-      const response = await fetch("http://localhost:8080/history");
+      const response = await fetch("http://localhost:8080/history/1");
       const result = await response.json();
       console.log(result);
       setTravels(result);
