@@ -1,13 +1,12 @@
 import React from "react";
-
-import "./Item.less";
+import "./Card.less";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 import Like from "./Like";
 
-export default function Item() {
+export default function MyCard() {
   function onClick() {
     //
   }

@@ -6,21 +6,21 @@ import Comment from "./Comment";
 export default function TravelTabs() {
   return (
     <Tabs
-      defaultActiveKey="profile"
+      defaultActiveKey="comments"
       id="fill-tab-example"
       className="my-3"
       fill
     >
-      <Tab eventKey="home" title="Отзывы">
+      <Tab eventKey="comments" title="Отзывы">
         <Comment />
       </Tab>
-      <Tab eventKey="profile" title="Ответы на вопросы">
+      <Tab eventKey="faq" title="Ответы на вопросы">
         <TravelAccordion />
       </Tab>
-      <Tab eventKey="longer-tab" title="Участники">
+      <Tab eventKey="party" title="Участники">
         Участники
       </Tab>
-      <Tab eventKey="contact" title="Другая информация">
+      <Tab eventKey="other" title="Другая информация">
         Другая информация
       </Tab>
     </Tabs>

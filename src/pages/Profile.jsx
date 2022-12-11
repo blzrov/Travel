@@ -4,7 +4,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Button as ButtonBootstrap } from "react-bootstrap";
+import { Button as ButtonMui } from "@mui/material";
 
 import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
@@ -57,9 +58,17 @@ export default function Profile() {
               <Form.Label>Регион</Form.Label>
               <PickRegion />
             </Form.Group>
-            <Button variant="success" type="submit">
-              Сохранить
-            </Button>
+            <div>
+              <ButtonBootstrap variant="success" type="button">
+                Сохранить
+              </ButtonBootstrap>
+            </div>
+            <br />
+            <div>
+              <ButtonMui variant="text" size="small" color="error">
+                Выйти
+              </ButtonMui>
+            </div>
           </Form>
         </Col>
       </Row>

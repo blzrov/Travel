@@ -20,22 +20,22 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-        <Container>
-          <Routes>
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Favorites" element={<Favorites />} />
-            <Route path="/Help" element={<Help />} />
-            <Route path="/Organizers" element={<Organizers />} />
-            <Route path="/Travels" element={<Travels />} />
-            <Route path="/PickTour" element={<PickTour />} />
-            <Route path="/PickTour" element={<PickTour />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/PickTour/1" element={<Travel />} />
-            <Route path="/Travels/1" element={<Travel />} />
-            <Route path="/" element={<Login />} />
-          </Routes>
-        </Container>
+          <Header />
+          <Container>
+            <Routes>
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Favorites" element={<Favorites />} />
+              <Route path="/Help" element={<Help />} />
+              <Route path="/Organizers" element={<Organizers />} />
+              <Route path="/Travels" element={<Travels />} />
+              <Route path="/PickTour" element={<PickTour />} />
+              <Route path="/PickTour" element={<PickTour />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/PickTour/1" element={<Travel />} />
+              <Route path="/Travels/1" element={<Travel />} />
+              <Route path="/" element={<Login />} />
+            </Routes>
+          </Container>
       </BrowserRouter>
     </div>
   );

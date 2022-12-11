@@ -12,9 +12,19 @@ export default function Login() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  function onClick() {
-    console.log({ login, password });
-  }
+  const [result, setResult] = useState("");
+
+  const postLogin = async () => {
+    const response = await fetch("http://localhost:8080/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ login, password }),
+    }); // завершается с заголовками ответа
+    const result = await response.json(); // читать тело ответа в формате JSON
+    setResult(result);
+  };
 
   return (
     <div className="login-wrapper">
@@ -39,15 +49,17 @@ export default function Login() {
                 type="password"
               />
             </div>
+            {result === false && "Ошибка"}
+            {result === true && "Успешно"}
             <br />
             <div>
-              <Button onClick={onClick} variant="contained">
+              <Button onClick={postLogin} variant="contained">
                 Войти
               </Button>
             </div>
             <br />
             <div>
-              <Button onClick={onClick} variant="text" size="small">
+              <Button onClick={postLogin} variant="text" size="small">
                 Зарегистрироваться
               </Button>
             </div>
