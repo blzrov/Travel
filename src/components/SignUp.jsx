@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 import Form from "react-bootstrap/Form";
-import { Button as ButtonBootstrap } from "react-bootstrap";
 import { Button as ButtonMui } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -11,12 +11,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
 
-import { User } from "../App";
-import { useNavigate } from "react-router-dom";
-
-export default function Profile(props) {
-  const user = useContext(User);
-  const navigate = useNavigate();
+export default function SignUp(props) {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [result, setResult] = useState("");
 
   const [name, setName] = useState(null);
   const [surname, setSurname] = useState(null);
@@ -25,18 +23,10 @@ export default function Profile(props) {
   const [num, setNum] = useState(null);
   const [region, setRegion] = useState("");
 
-  useEffect(() => {
-    async function getProfile() {
-      const response = await fetch(`http://localhost:8080/profile/${user}`);
-      const result = await response.json();
-      console.log(result);
-    }
-    getProfile();
-  }, [user]);
-
-  async function onSubmit() {
+  const signUp = async () => {
     const obj = {
-      login: user,
+      login,
+      password,
       name: name,
       surname: surname,
       birth: birth,
@@ -44,8 +34,7 @@ export default function Profile(props) {
       num: num,
       region: region,
     };
-    console.log(obj);
-    const response = await fetch(`http://localhost:8080/profile/${user}`, {
+    const response = await fetch("http://localhost:8080/signUp/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -53,15 +42,26 @@ export default function Profile(props) {
       body: JSON.stringify(obj),
     });
     const result = await response.json();
-    console.log(result);
-  }
+    setResult(result);
+    if (result) {
+      props.setLogin(login);
+      props.setIsLogin(login);
+    }
+  };
 
   return (
     <Row>
       <Col md={4} className="m-auto">
         <Form>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <h5>Личные данные</h5>
+            <h5>Регистрация</h5>
+            <Form.Label>Логин</Form.Label>
+            <Form.Control onChange={(e) => setLogin(e.target.value)} />
+            <Form.Label>Пароль</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <Form.Label>Имя</Form.Label>
             <Form.Control onChange={(e) => setName(e.target.value)} />
             <Form.Label>Фамилия</Form.Label>
@@ -103,22 +103,22 @@ export default function Profile(props) {
             <PickRegion onChange={(e) => setRegion(e.target.value)} />
           </Form.Group>
           <div>
-            <ButtonBootstrap onClick={onSubmit} variant="success" type="button">
-              Сохранить
-            </ButtonBootstrap>
+            <ButtonMui
+              onClick={signUp}
+              variant="contained"
+              color={result ? "success" : "primary"}
+            >
+              Зарегистрироваться
+            </ButtonMui>
           </div>
           <br />
           <div>
             <ButtonMui
-              onClick={() => {
-                props.setLogin(null);
-                navigate("/");
-              }}
+              onClick={() => props.setIsLogin(true)}
               variant="text"
               size="small"
-              color="error"
             >
-              Выйти
+              Уже есть аккаунт? Войти
             </ButtonMui>
           </div>
         </Form>

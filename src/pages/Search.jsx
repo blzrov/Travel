@@ -13,13 +13,13 @@ export default function Search() {
   // eslint-disable-next-line
   const [travels, setTravels] = useState([]);
 
-  const [region, setRegion] = useState("d8327a56-80de-4df2-815c-4f6ab1224c50");
+  const [region, setRegion] = useState("");
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
-  const [longMin, setLongMin] = useState();
-  const [longMax, setLongMax] = useState();
-  const [costMin, setCostMin] = useState();
-  const [costMax, setCostMax] = useState();
+  const [longMin, setLongMin] = useState(null);
+  const [longMax, setLongMax] = useState(null);
+  const [costMin, setCostMin] = useState(null);
+  const [costMax, setCostMax] = useState(null);
 
   function onSubmit() {
     const obj = { region, start, finish, longMin, longMax, costMin, costMax };

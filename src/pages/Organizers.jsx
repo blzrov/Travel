@@ -10,7 +10,7 @@ import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
 
 export default function Organizers() {
-  const [region, setRegion] = useState("d8327a56-80de-4df2-815c-4f6ab1224c50");
+  const [region, setRegion] = useState("");
   const [name, setName] = useState();
   const [place, setPlace] = useState();
   const [placeDescription, setPlaceDescription] = useState();
