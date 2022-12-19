@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,7 +9,22 @@ import TravelTabs from "../components/TravelTabs";
 
 import "./Travel.less";
 
+import { useLocation } from "react-router-dom";
+
 export default function Travel() {
+  let l = useLocation();
+  function f() {
+    let a=(l.pathname.split("/").pop());
+    async function doSearch() {
+      const response = await fetch(`http://localhost:8080/travel/${a}`);
+      const result = await response.json();
+      console.log(result);
+    }
+    doSearch();
+  }
+  // eslint-disable-next-line
+  useEffect(f, []);
+
   return (
     <div className="mb-5">
       <Row>

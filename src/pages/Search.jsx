@@ -23,6 +23,7 @@ export default function Search() {
 
   function onSubmit() {
     const obj = { region, start, finish, longMin, longMax, costMin, costMax };
+    console.log(obj)
     async function doSearch() {
       const response = await fetch("http://localhost:8080/search", {
         method: "POST",
@@ -32,6 +33,7 @@ export default function Search() {
         body: JSON.stringify(obj),
       });
       const result = await response.json();
+      console.log(result)
       setTravels(result);
     }
     doSearch();
@@ -111,24 +113,13 @@ export default function Search() {
           <div className="flex-grow-1 bd-highlight">
             <Card className="m-1" />
           </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
-          <div className="flex-grow-1 bd-highlight">
-            <Card className="m-1" />
-          </div>
+          {travels.map((e, i) => {
+            return (
+              <div className="flex-grow-1 bd-highlight">
+                <Card className="m-1" />
+              </div>
+            );
+          })}
         </div>
       </Col>
     </Row>
