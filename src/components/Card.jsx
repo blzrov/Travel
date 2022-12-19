@@ -8,7 +8,7 @@ import Like from "./Like";
 
 import { useNavigate } from "react-router-dom";
 
-export default function MyCard() {
+export default function MyCard(travel) {
   const navigate = useNavigate();
 
   return (
@@ -21,11 +21,14 @@ export default function MyCard() {
       ></div>
       <Like />
       <Card.Body style={{ position: "relative", color: "white" }}>
-        <Card.Title>Камчатка</Card.Title>
-        <Card.Text>Поход вокруг Толбачика</Card.Text>
-        <Card.Text>01.01.2000 - 02.12.2001</Card.Text>
-        <Card.Text>19 000 ₽</Card.Text>
-        <Button onClick={() => navigate("/travels/1")} variant="primary">
+        <Card.Title>{travel.place}</Card.Title>
+        <Card.Text>{travel.placeDescription}</Card.Text>
+        <Card.Text>{`${travel.start} - ${travel.finish}`}</Card.Text>
+        <Card.Text>{travel.cost}</Card.Text>
+        <Button
+          onClick={() => navigate(`/travels/${travel._id}`)}
+          variant="primary"
+        >
           Подробнее
         </Button>
       </Card.Body>
