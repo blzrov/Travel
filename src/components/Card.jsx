@@ -8,7 +8,7 @@ import Like from "./Like";
 
 import { useNavigate } from "react-router-dom";
 
-export default function MyCard(travel) {
+export default function MyCard({travel}) {
   const navigate = useNavigate();
 
   return (
