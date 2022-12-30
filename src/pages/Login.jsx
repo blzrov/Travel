@@ -1,27 +1,28 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Login.less";
+
+import { useNavigate } from "react-router-dom";
 
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
-import { User } from "../App";
-import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../App";
 
 export default function Login({ setLogin }) {
-  const user = useContext(User);
+  const loginContext = useContext(LoginContext);
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
 
   useEffect(() => {
-    if (user) navigate("/Search");
+    if (loginContext) navigate("/Search");
   });
 
   return (
     <>
-      {isLogin ? (
-        <SignIn setIsLogin={setIsLogin} setLogin={setLogin} />
+      {isSignIn ? (
+        <SignIn setIsSignIn={setIsSignIn} setLogin={setLogin} />
       ) : (
-        <SignUp setIsLogin={setIsLogin} setLogin={setLogin} />
+        <SignUp setIsSignIn={setIsSignIn} setLogin={setLogin} />
       )}
     </>
   );

@@ -1,16 +1,16 @@
 import React from "react";
 import "./Card.less";
 
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 import Like from "./Like";
 
-import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-export default function MyCard({travel}) {
+export default function MyCard({ travel }) {
   const navigate = useNavigate();
-
   return (
     <Card style={{ minWidth: "300px" }}>
       <div
@@ -23,10 +23,14 @@ export default function MyCard({travel}) {
       <Card.Body style={{ position: "relative", color: "white" }}>
         <Card.Title>{travel.place}</Card.Title>
         <Card.Text>{travel.placeDescription}</Card.Text>
-        <Card.Text>{`${travel.start} - ${travel.finish}`}</Card.Text>
-        <Card.Text>{travel.cost}</Card.Text>
+        <Card.Text>{`${moment(travel.start)
+          .utc()
+          .format("MM.DD.YYYY")} - ${moment(travel.finish)
+          .utc()
+          .format("MM.DD.YYYY")}`}</Card.Text>
+        <Card.Text>{travel.cost} ₽</Card.Text>
         <Button
-          onClick={() => navigate(`/travels/${travel._id}`)}
+          onClick={() => navigate(`/travels/${travel.id}`)}
           variant="primary"
         >
           Подробнее

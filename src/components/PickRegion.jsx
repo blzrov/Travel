@@ -7,7 +7,7 @@ export default function PickRegion({ onChange }) {
 
   return (
     <Form.Select
-      value={null}
+      value={""}
       onChange={onChange}
       aria-label="Default select example"
     >

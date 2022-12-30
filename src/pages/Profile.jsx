@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { useNavigate } from "react-router-dom";
+
+import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -8,14 +13,11 @@ import { Button as ButtonMui } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import PickDate from "../components/PickDate";
-import PickRegion from "../components/PickRegion";
 
-import { User } from "../App";
-import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../App";
 
-export default function Profile(props) {
-  const user = useContext(User);
+export default function Profile({ setLogin }) {
+  const loginContext = useContext(LoginContext);
   const navigate = useNavigate();
 
   const [name, setName] = useState(null);
@@ -27,16 +29,18 @@ export default function Profile(props) {
 
   useEffect(() => {
     async function getProfile() {
-      const response = await fetch(`http://localhost:8080/profile/${user}`);
+      const response = await fetch(
+        `http://localhost:8080/profile/${loginContext}`
+      );
       const result = await response.json();
       console.log(result);
     }
     getProfile();
-  }, [user]);
+  }, [loginContext]);
 
   async function onSubmit() {
     const obj = {
-      login: user,
+      login: loginContext,
       name: name,
       surname: surname,
       birth: birth,
@@ -44,16 +48,19 @@ export default function Profile(props) {
       num: num,
       region: region,
     };
-    console.log(obj);
-    const response = await fetch(`http://localhost:8080/profile/${user}`, {
+    await fetch(`http://localhost:8080/profile/${loginContext}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
       body: JSON.stringify(obj),
     });
-    const result = await response.json();
-    console.log(result);
+  }
+
+  function logout() {
+    setLogin(null);
+    localStorage.removeItem("login");
+    navigate("/");
   }
 
   return (
@@ -110,10 +117,7 @@ export default function Profile(props) {
           <br />
           <div>
             <ButtonMui
-              onClick={() => {
-                props.setLogin(null);
-                navigate("/");
-              }}
+              onClick={logout}
               variant="text"
               size="small"
               color="error"

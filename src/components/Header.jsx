@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
 import logo from "../img/logo.svg";
 
-import { User } from "../App";
+import { NavLink } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
+import { LoginContext } from "../App";
 
 export default function Header() {
-  const user = useContext(User);
+  const loginContext = useContext(LoginContext);
+
   const style = ({ isActive }) =>
     isActive ? { textDecoration: "underline" } : { textDecoration: "none" };
 
@@ -50,7 +52,7 @@ export default function Header() {
           </NavLink>
 
           <NavLink className="NavLink mx-2" to="/Profile" style={style}>
-            {user}
+            {loginContext}
           </NavLink>
         </Nav>
       </Navbar.Collapse>

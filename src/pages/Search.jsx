@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
+import Card from "../components/Card";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import PickDate from "../components/PickDate";
-import PickRegion from "../components/PickRegion";
-import Card from "../components/Card";
-
 export default function Search() {
-  // eslint-disable-next-line
   const [travels, setTravels] = useState([]);
-
   const [region, setRegion] = useState("");
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
@@ -23,7 +21,6 @@ export default function Search() {
 
   function onSubmit() {
     const obj = { region, start, finish, longMin, longMax, costMin, costMax };
-    console.log(obj);
     async function doSearch() {
       const response = await fetch("http://localhost:8080/search", {
         method: "POST",
@@ -33,7 +30,6 @@ export default function Search() {
         body: JSON.stringify(obj),
       });
       const result = await response.json();
-      console.log(result);
       setTravels(result);
     }
     doSearch();

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TextField from "@mui/material/TextField";
-import { Button as ButtonMui } from "@mui/material";
-
-import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 export default function SignIn(props) {
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ export default function SignIn(props) {
     setResult(resultResp);
     if (resultResp) {
       props.setLogin(login);
+      localStorage.setItem("login", login);
       navigate("/Search");
     }
   };
@@ -55,19 +56,19 @@ export default function SignIn(props) {
           {result === true && "Успешно"}
           <br />
           <div>
-            <ButtonMui onClick={signIn} variant="contained" color="primary">
+            <Button onClick={signIn} variant="contained" color="primary">
               Войти
-            </ButtonMui>
+            </Button>
           </div>
           <br />
           <div>
-            <ButtonMui
-              onClick={() => props.setIsLogin(false)}
+            <Button
+              onClick={() => props.setIsSignIn(false)}
               variant="text"
               size="small"
             >
               Зарегистрироваться
-            </ButtonMui>
+            </Button>
           </div>
         </div>
       </Col>

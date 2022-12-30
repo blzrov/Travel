@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 
-import Form from "react-bootstrap/Form";
-import { Button as ButtonMui } from "@mui/material";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
 
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import { Button } from "@mui/material";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
 export default function SignUp(props) {
+  const navigate = useNavigate();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [result, setResult] = useState("");
@@ -45,7 +48,9 @@ export default function SignUp(props) {
     setResult(result);
     if (result) {
       props.setLogin(login);
-      props.setIsLogin(login);
+      props.setIsSignIn(login);
+      localStorage.setItem("login", login);
+      navigate("/Search");
     }
   };
 
@@ -103,23 +108,23 @@ export default function SignUp(props) {
             <PickRegion onChange={(e) => setRegion(e.target.value)} />
           </Form.Group>
           <div>
-            <ButtonMui
+            <Button
               onClick={signUp}
               variant="contained"
               color={result ? "success" : "primary"}
             >
               Зарегистрироваться
-            </ButtonMui>
+            </Button>
           </div>
           <br />
           <div>
-            <ButtonMui
-              onClick={() => props.setIsLogin(true)}
+            <Button
+              onClick={() => props.setIsSignIn(true)}
               variant="text"
               size="small"
             >
               Уже есть аккаунт? Войти
-            </ButtonMui>
+            </Button>
           </div>
         </Form>
       </Col>
