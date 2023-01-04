@@ -7,7 +7,6 @@ export default function PickRegion({ onChange }) {
 
   return (
     <Form.Select
-      value={""}
       onChange={onChange}
       aria-label="Default select example"
     >
@@ -16,7 +15,7 @@ export default function PickRegion({ onChange }) {
       </option>
       {regions.map((e) => {
         return (
-          <option key={e.fias_id} value={e.fias_id}>
+          <option key={e.fias_id} value={e.name_with_type}>
             {e.name_with_type}
           </option>
         );

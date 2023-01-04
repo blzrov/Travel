@@ -9,7 +9,6 @@ export default function Favorites() {
     async function getFavorites() {
       const response = await fetch("http://localhost:8080/favorites/1");
       const result = await response.json();
-      console.log(result);
       setTravels(result);
     }
     getFavorites();

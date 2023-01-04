@@ -71,6 +71,8 @@ export default function SignUp(props) {
             <Form.Control onChange={(e) => setName(e.target.value)} />
             <Form.Label>Фамилия</Form.Label>
             <Form.Control onChange={(e) => setSurname(e.target.value)} />
+            <Form.Label>Фото</Form.Label>
+            <Form.Control type="file" size="sm" />
             <Form.Label>Дата рождения</Form.Label>
             <PickDate value={birth} onChange={(e) => setBirth(e)} />
             <Form.Label className="mb-0">Пол</Form.Label>

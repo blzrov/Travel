@@ -67,12 +67,14 @@ export default function Profile({ setLogin }) {
     <Row>
       <Col md={4} className="m-auto">
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <h5>Личные данные</h5>
             <Form.Label>Имя</Form.Label>
             <Form.Control onChange={(e) => setName(e.target.value)} />
             <Form.Label>Фамилия</Form.Label>
             <Form.Control onChange={(e) => setSurname(e.target.value)} />
+            <Form.Label>Фото</Form.Label>
+            <Form.Control type="file" size="sm" />
             <Form.Label>Дата рождения</Form.Label>
             <PickDate value={birth} onChange={(e) => setBirth(e)} />
             <Form.Label className="mb-0">Пол</Form.Label>

@@ -27,7 +27,7 @@ export default function Travels() {
       setTravels(result);
     }
 
-    if (value === 1) {
+    if (value === 0) {
       getFuture();
     } else {
       getHistory();

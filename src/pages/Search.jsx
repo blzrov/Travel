@@ -80,7 +80,7 @@ export default function Search() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <h5>Стоимость</h5>
+            <h5>Затраты</h5>
             <Row>
               <Col xs={6}>
                 <Form.Label>От</Form.Label>
