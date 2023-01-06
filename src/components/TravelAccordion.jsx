@@ -4,6 +4,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export default function TravelAccordion() {
   return (
@@ -38,6 +40,15 @@ export default function TravelAccordion() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+      <Form className="mt-3">
+        <Form.Group className="mb-2">
+          <Form.Label>Остались вопросы?</Form.Label>
+          <Form.Control />
+        </Form.Group>
+        <Button variant="primary" type="button" size="sm">
+          Спросить
+        </Button>
+      </Form>
     </div>
   );
 }

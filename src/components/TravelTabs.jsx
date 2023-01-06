@@ -2,6 +2,8 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import TravelAccordion from "./TravelAccordion";
 import Comment from "./Comment";
+import ListPeople from "./ListPeople";
+import ListItems from "./ListItems";
 
 export default function TravelTabs() {
   return (
@@ -18,10 +20,10 @@ export default function TravelTabs() {
         <TravelAccordion />
       </Tab>
       <Tab eventKey="party" title="Участники">
-        Участники
+        <ListPeople />
       </Tab>
-      <Tab eventKey="other" title="Другая информация">
-        Другая информация
+      <Tab eventKey="other" title="Взять с собой">
+        <ListItems />
       </Tab>
     </Tabs>
   );

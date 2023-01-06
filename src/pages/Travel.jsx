@@ -10,6 +10,7 @@ import TravelTabs from "../components/TravelTabs";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 export default function Travel() {
   const location = useLocation();
@@ -44,15 +45,36 @@ export default function Travel() {
           </Col>
           <Col sm={12} md={6}>
             <div className="travel-img-aside">
-              <div>Регион: {travel.region}</div>
-              <div>Организатор: {travel.organizer}</div>
               <div>
-                Даты: {moment(travel.start).utc().format("MM.DD.YYYY")}
+                <b>Регион:</b> {travel.region}
+              </div>
+              <div>
+                <b>Организатор:</b> {travel.organizer}
+              </div>
+              <div>
+                <b>Даты:</b> {moment(travel.start).utc().format("MM.DD.YYYY")}
                 {" - "}
                 {moment(travel.finish).utc().format("MM.DD.YYYY")}
               </div>
-              <div>Проводник: {travel.guide}</div>
-              <div>Затраты: {travel.cost} ₽</div>
+              {/* <div>Проводник: {travel.guide}</div> */}
+              <div>
+                <b>Затраты:</b> {travel.cost} ₽
+              </div>
+              <div>
+                <b>Свободные места:</b> {"7 из 14"}
+              </div>
+              <div>
+                <Button
+                  className="mt-5"
+                  onClick={() => {}}
+                  variant="success"
+                  type="button"
+                  size={"lg"}
+                  disabled={false}
+                >
+                  Принять участие
+                </Button>
+              </div>
             </div>
           </Col>
         </Row>

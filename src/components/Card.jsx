@@ -2,6 +2,8 @@ import React from "react";
 import "./Card.less";
 
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import moment from "moment";
 
 import Like from "./Like";
@@ -9,8 +11,11 @@ import Like from "./Like";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function MyCard({ travel }) {
+export default function MyCard({ travel, setModalShow, setSelectedId }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     <Card style={{ minWidth: "300px" }}>
       <div
@@ -23,18 +28,64 @@ export default function MyCard({ travel }) {
       <Card.Body style={{ position: "relative", color: "white" }}>
         <Card.Title>{travel.place}</Card.Title>
         <Card.Text>{travel.placeDescription}</Card.Text>
+        {location.pathname === "/Travels" &&
+          moment().isBefore(moment(travel.start)) && (
+            <Card.Text>
+              {"Дней до начала: "}
+              {moment
+                .duration(moment(travel.start).diff(moment()))
+                .asDays()
+                .toFixed(0)}
+            </Card.Text>
+          )}
         <Card.Text>{`${moment(travel.start)
           .utc()
-          .format("MM.DD.YYYY")} - ${moment(travel.finish)
+          .format("DD.MM.YYYY")} - ${moment(travel.finish)
           .utc()
-          .format("MM.DD.YYYY")}`}</Card.Text>
+          .format("DD.MM.YYYY")}`}</Card.Text>
         <Card.Text>{travel.cost} ₽</Card.Text>
-        <Button
-          onClick={() => navigate(`/travels/${travel.id}`)}
-          variant="primary"
-        >
-          Подробнее
-        </Button>
+        {location.pathname === "/Travels" &&
+          moment().isAfter(moment(travel.start)) && (
+            <Button
+              onClick={() => {
+                setSelectedId(travel.id);
+                setModalShow(true);
+              }}
+              variant="success"
+            >
+              Оставить отзыв
+            </Button>
+          )}
+        {location.pathname === "/Search" && (
+          <Button
+            onClick={() => navigate(`/Search/${travel.id}`)}
+            variant="primary"
+          >
+            Подробнее
+          </Button>
+        )}
+        {location.pathname === "/Travels" && (
+          <Button
+            className="ms-2"
+            onClick={() => navigate(`/travels/${travel.id}`)}
+            variant="primary"
+          >
+            Подробнее
+          </Button>
+        )}
+        {location.pathname === "/Travels" &&
+          moment().isBefore(moment(travel.start)) && (
+            <Button
+              onClick={() => {
+                setSelectedId(travel.id);
+                setModalShow(true);
+              }}
+              className="ms-2"
+              variant="outline-light"
+            >
+              Чеклист
+            </Button>
+          )}
       </Card.Body>
     </Card>
   );

@@ -3,6 +3,9 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
+import FutureTravels from "../components/FutureTravels";
+import HistoryTravels from "../components/HistoryTravels";
+
 export default function Travels() {
   const [value, setValue] = React.useState(0);
   // eslint-disable-next-line
@@ -35,11 +38,15 @@ export default function Travels() {
   }, [value]);
 
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-      <Tabs value={value} onChange={handleChange} centered>
-        <Tab label="Ближайшие" />
-        <Tab label="Архив" />
-      </Tabs>
-    </Box>
+    <div>
+      <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+        <Tabs value={value} onChange={handleChange} centered>
+          <Tab label="Ближайшие" />
+          <Tab label="Архив" />
+        </Tabs>
+      </Box>
+      {value === 0 && <FutureTravels />}
+      {value === 1 && <HistoryTravels />}
+    </div>
   );
 }
