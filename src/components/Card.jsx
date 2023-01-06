@@ -26,8 +26,8 @@ export default function MyCard({ travel, setModalShow, setSelectedId }) {
       ></div>
       <Like />
       <Card.Body style={{ position: "relative", color: "white" }}>
-        <Card.Title>{travel.place}</Card.Title>
-        <Card.Text>{travel.placeDescription}</Card.Text>
+        <Card.Title>{travel.name}</Card.Title>
+        <Card.Text>{travel.place}</Card.Text>
         {location.pathname === "/Travels" &&
           moment().isBefore(moment(travel.start)) && (
             <Card.Text>
@@ -44,6 +44,11 @@ export default function MyCard({ travel, setModalShow, setSelectedId }) {
           .utc()
           .format("DD.MM.YYYY")}`}</Card.Text>
         <Card.Text>{travel.cost} ₽</Card.Text>
+        {location.pathname === "/Organizers" && (
+          <Card.Text>
+            <b>Могут ли пенсионеры пройти данный поход?</b>
+          </Card.Text>
+        )}
         {location.pathname === "/Travels" &&
           moment().isAfter(moment(travel.start)) && (
             <Button
@@ -56,7 +61,8 @@ export default function MyCard({ travel, setModalShow, setSelectedId }) {
               Оставить отзыв
             </Button>
           )}
-        {location.pathname === "/Search" && (
+        {(location.pathname === "/Search" ||
+          location.pathname === "/Organizers") && (
           <Button
             onClick={() => navigate(`/Search/${travel.id}`)}
             variant="primary"
@@ -86,6 +92,18 @@ export default function MyCard({ travel, setModalShow, setSelectedId }) {
               Чеклист
             </Button>
           )}
+        {location.pathname === "/Organizers" && (
+          <Button
+            onClick={() => {
+              setSelectedId(travel.id);
+              setModalShow(true);
+            }}
+            className="ms-2"
+            variant="success"
+          >
+            Ответить
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

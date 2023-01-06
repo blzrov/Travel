@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,19 +9,24 @@ import Button from "react-bootstrap/Button";
 import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
 
+import { LoginContext } from "../App";
+
 export default function Organizers() {
+  const loginContext = useContext(LoginContext);
+
   const [region, setRegion] = useState("");
   const [name, setName] = useState();
   const [place, setPlace] = useState();
-  const [placeDescription, setPlaceDescription] = useState("test");
+  const [placeDescription, setPlaceDescription] = useState();
   // eslint-disable-next-line
-  const [organizer, setOrganizer] = useState();
+  const [organizer, setOrganizer] = useState(loginContext);
   // eslint-disable-next-line
-  const [guide, setGuide] = useState("test");
+  const [guide, setGuide] = useState(loginContext);
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
   const [description, setDescription] = useState();
   const [cost, setCost] = useState();
+  //seats
 
   const [media, setMedia] = useState([{}]);
 
@@ -115,8 +120,12 @@ export default function Organizers() {
             <Form.Control
               onChange={(e) => setCost(e.target.value)}
               type="number"
-              placeholder=""
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Количество мест</Form.Label>
+            <Form.Control onChange={(e) => {}} type="number" />
           </Form.Group>
 
           <Form.Group className="mb-3">

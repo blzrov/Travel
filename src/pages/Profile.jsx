@@ -73,6 +73,8 @@ export default function Profile({ setLogin }) {
             <Form.Control onChange={(e) => setName(e.target.value)} />
             <Form.Label>Фамилия</Form.Label>
             <Form.Control onChange={(e) => setSurname(e.target.value)} />
+            <Form.Label>О себе</Form.Label>
+            <Form.Control as="textarea" onChange={(e) => {}} />
             <Form.Label>Фото</Form.Label>
             <Form.Control type="file" size="sm" />
             <Form.Label>Дата рождения</Form.Label>
