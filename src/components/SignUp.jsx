@@ -48,11 +48,14 @@ export default function SignUp(props) {
     });
     const result = await response.json();
     setResult(result);
-    if (result) {
-      props.setLogin(login);
-      props.setIsSignIn(login);
-      localStorage.setItem("login", login);
-      navigate("/Search");
+    // if (result) {
+    //   props.setLogin(login);
+    //   props.setIsSignIn(true);
+    //   localStorage.setItem("login", login);
+    //   navigate("/Search");
+    // }
+    if (true) {
+      props.setIsSignIn(true);
     }
   };
 
