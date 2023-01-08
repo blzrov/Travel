@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-import PickDate from "../components/PickDate";
-import PickRegion from "../components/PickRegion";
-import Card from "../components/Card";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import PickDate from "../components/PickDate";
+import PickRegion from "../components/PickRegion";
+import Card from "../components/Card";
+
 export default function Search() {
   const [travels, setTravels] = useState([]);
-
   const [settings, setSettings] = useState({
     region: "",
     start: new Date(),

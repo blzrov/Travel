@@ -25,6 +25,7 @@ export default function SignUp(props) {
   const [sex, setSex] = useState(null);
   const [num, setNum] = useState(null);
   const [region, setRegion] = useState("");
+  const [about, setAbout] = useState("");
 
   const signUp = async () => {
     const obj = {
@@ -36,6 +37,7 @@ export default function SignUp(props) {
       sex: sex,
       num: num,
       region: region,
+      about,
     };
     const response = await fetch("http://localhost:8080/signUp/", {
       method: "POST",
@@ -58,7 +60,7 @@ export default function SignUp(props) {
     <Row>
       <Col md={4} className="m-auto">
         <Form>
-          <Form.Group className="mb-3" >
+          <Form.Group className="mb-3">
             <h5>Регистрация</h5>
             <Form.Label>Логин</Form.Label>
             <Form.Control onChange={(e) => setLogin(e.target.value)} />
@@ -72,7 +74,10 @@ export default function SignUp(props) {
             <Form.Label>Фамилия</Form.Label>
             <Form.Control onChange={(e) => setSurname(e.target.value)} />
             <Form.Label>О себе</Form.Label>
-            <Form.Control as="textarea" onChange={(e) => {}} />
+            <Form.Control
+              as="textarea"
+              onChange={(e) => setAbout(e.target.value)}
+            />
             <Form.Label>Фото</Form.Label>
             <Form.Control type="file" size="sm" />
             <Form.Label>Дата рождения</Form.Label>
