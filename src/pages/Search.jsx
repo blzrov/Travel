@@ -11,23 +11,31 @@ import Button from "react-bootstrap/Button";
 
 export default function Search() {
   const [travels, setTravels] = useState([]);
-  const [region, setRegion] = useState("");
-  const [start, setStart] = useState(null);
-  const [finish, setFinish] = useState(null);
-  const [longMin, setLongMin] = useState(null);
-  const [longMax, setLongMax] = useState(null);
-  const [costMin, setCostMin] = useState(null);
-  const [costMax, setCostMax] = useState(null);
+
+  const [settings, setSettings] = useState({
+    region: "",
+    start: new Date(),
+    finish: null,
+    longMin: null,
+    longMax: null,
+    costMin: null,
+    costMax: null,
+  });
+
+  function handleSettings(k, value) {
+    setSettings((prev) => {
+      return { ...prev, [`${k}`]: value };
+    });
+  }
 
   function onSubmit() {
-    const obj = { region, start, finish, longMin, longMax, costMin, costMax };
     async function doSearch() {
       const response = await fetch("http://localhost:8080/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
         },
-        body: JSON.stringify(obj),
+        body: JSON.stringify(settings),
       });
       const result = await response.json();
       setTravels(result);
@@ -41,20 +49,28 @@ export default function Search() {
     <Row>
       <Col xs={12} md={3}>
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <h5>Регион</h5>
-            <PickRegion onChange={(e) => setRegion(e.target.value)} />
+            <PickRegion
+              onChange={(e) => handleSettings("region", e.target.value)}
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <h5>Даты</h5>
             <Row>
               <Col xs={6}>
                 <Form.Label>Начало не раньше:</Form.Label>
-                <PickDate value={start} onChange={(e) => setStart(e)} />
+                <PickDate
+                  value={settings.start}
+                  onChange={(e) => handleSettings("start", e)}
+                />
               </Col>
               <Col xs={6}>
                 <Form.Label>Финиш не позднее:</Form.Label>
-                <PickDate value={finish} onChange={(e) => setFinish(e)} />
+                <PickDate
+                  value={settings.finish}
+                  onChange={(e) => handleSettings("finish", e)}
+                />
               </Col>
             </Row>
           </Form.Group>
@@ -65,14 +81,14 @@ export default function Search() {
               <Col xs={6}>
                 <Form.Label>От</Form.Label>
                 <Form.Control
-                  onChange={(e) => setLongMin(e.target.value)}
+                  onChange={(e) => handleSettings("longMin", e.target.value)}
                   type="number"
                 />
               </Col>
               <Col xs={6}>
                 <Form.Label>До</Form.Label>
                 <Form.Control
-                  onChange={(e) => setLongMax(e.target.value)}
+                  onChange={(e) => handleSettings("longMax", e.target.value)}
                   type="number"
                 />
               </Col>
@@ -85,14 +101,14 @@ export default function Search() {
               <Col xs={6}>
                 <Form.Label>От</Form.Label>
                 <Form.Control
-                  onChange={(e) => setCostMin(e.target.value)}
+                  onChange={(e) => handleSettings("costMin", e.target.value)}
                   type="number"
                 />
               </Col>
               <Col xs={6}>
                 <Form.Label>До</Form.Label>
                 <Form.Control
-                  onChange={(e) => setCostMax(e.target.value)}
+                  onChange={(e) => handleSettings("costMax", e.target.value)}
                   type="number"
                 />
               </Col>

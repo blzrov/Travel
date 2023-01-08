@@ -14,7 +14,6 @@ import Card from "react-bootstrap/Card";
 export default function MyCard({ travel, setModalShow, setSelectedId }) {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <Card style={{ minWidth: "300px" }}>

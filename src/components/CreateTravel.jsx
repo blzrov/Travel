@@ -14,35 +14,50 @@ import { LoginContext } from "../App";
 export default function Organizers() {
   const loginContext = useContext(LoginContext);
 
-  const [region, setRegion] = useState("");
-  const [name, setName] = useState();
-  const [place, setPlace] = useState();
-  const [placeDescription, setPlaceDescription] = useState();
-  // eslint-disable-next-line
-  const [organizer, setOrganizer] = useState(loginContext);
-  // eslint-disable-next-line
-  const [guide, setGuide] = useState(loginContext);
-  const [start, setStart] = useState(null);
-  const [finish, setFinish] = useState(null);
-  const [description, setDescription] = useState();
-  const [cost, setCost] = useState();
-  //seats
+  const [settings, setSettings] = useState({
+    region: "",
+    name: null,
+    place: null,
+    placeDescription: null,
+    description: null,
+    start: null,
+    finish: null,
+    cost: null,
+    seats: null,
+    organizer: loginContext,
+    guide: loginContext,
+  });
 
-  const [media, setMedia] = useState([{}]);
+  function handleSettings(k, value) {
+    setSettings((prev) => {
+      return { ...prev, [`${k}`]: value };
+    });
+  }
+
+  const [media, setMedia] = useState([]);
+  const [items, setItems] = useState([]);
+
+  function handleItems(value, i) {
+    setItems((prev) => {
+      const items = [...prev];
+      items[i] = value;
+      return items;
+    });
+  }
+
+  function handleMediaInfo(value, i) {
+    setMedia((prev) => {
+      const media = [...prev];
+      media[i].info = value;
+      return media;
+    });
+  }
 
   const postTravel = async () => {
-    const travel = {
-      region,
-      name,
-      place,
-      placeDescription,
-      organizer,
-      guide,
-      start,
-      finish,
-      description,
-      cost,
-    };
+    const travel = { ...settings };
+    travel.items = items;
+    travel.media = media;
+    console.log(travel);
     const response = await fetch("http://localhost:8080/travel", {
       method: "POST",
       headers: {
@@ -60,23 +75,31 @@ export default function Organizers() {
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Регион</Form.Label>
-            <PickRegion onChange={(e) => setRegion(e.target.value)} />
+            <PickRegion
+              onChange={(e) => handleSettings("region", e.target.value)}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Название</Form.Label>
-            <Form.Control onChange={(e) => setName(e.target.value)} />
+            <Form.Control
+              onChange={(e) => handleSettings("name", e.target.value)}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Локация</Form.Label>
-            <Form.Control onChange={(e) => setPlace(e.target.value)} />
+            <Form.Control
+              onChange={(e) => handleSettings("place", e.target.value)}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label>Описание локации</Form.Label>
             <Form.Control
-              onChange={(e) => setPlaceDescription(e.target.value)}
+              onChange={(e) =>
+                handleSettings("placeDescription", e.target.value)
+              }
             />
           </Form.Group>
 
@@ -98,34 +121,74 @@ export default function Organizers() {
           <Row className="mb-3">
             <Col xs={6}>
               <Form.Label>Дата старта</Form.Label>
-              <PickDate value={start} onChange={(e) => setStart(e)} />
+              <PickDate
+                value={settings.start}
+                onChange={(e) => handleSettings("start", e)}
+              />
             </Col>
             <Col xs={6}>
               <Form.Label>Дата финиша</Form.Label>
-              <PickDate value={finish} onChange={(e) => setFinish(e)} />
+              <PickDate
+                value={settings.finish}
+                onChange={(e) => handleSettings("finish", e)}
+              />
+            </Col>
+          </Row>
+
+          <Row className="mb-3">
+            <Col xs={6}>
+              <Form.Group>
+                <Form.Label>Затраты</Form.Label>
+                <Form.Control
+                  onChange={(e) => handleSettings("cost", e.target.value)}
+                  type="number"
+                />
+              </Form.Group>
+            </Col>
+
+            <Col xs={6}>
+              <Form.Group>
+                <Form.Label>Количество мест</Form.Label>
+                <Form.Control
+                  onChange={(e) => handleSettings("seats", e.target.value)}
+                  type="number"
+                />
+              </Form.Group>
             </Col>
           </Row>
 
           <Form.Group className="mb-3">
             <Form.Label>Подробное описание путешествия</Form.Label>
             <Form.Control
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => handleSettings("description", e.target.value)}
               as="textarea"
               rows={3}
             />
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Затраты</Form.Label>
-            <Form.Control
-              onChange={(e) => setCost(e.target.value)}
-              type="number"
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Количество мест</Form.Label>
-            <Form.Control onChange={(e) => {}} type="number" />
+            <Form.Label>Что взять с собой</Form.Label>
+            <Button
+              className="ms-2"
+              onClick={() => {
+                setItems((prev) => [...prev, ""]);
+              }}
+              variant="outline-primary"
+              type="button"
+              size="sm"
+            >
+              Добавить
+            </Button>
+            {items.map((e, i) => {
+              return (
+                <Form.Control
+                  key={i}
+                  onChange={(e) => handleItems(e.target.value, i)}
+                  className="mb-2"
+                  placeholder={`Предмет ${i + 1}`}
+                />
+              );
+            })}
           </Form.Group>
 
           <Form.Group className="mb-3">
@@ -135,7 +198,11 @@ export default function Organizers() {
                 <div key={i} className="mb-2">
                   <Row>
                     <Col xs={8}>
-                      <Form.Control as="textarea" placeholder="Описание" />
+                      <Form.Control
+                        onChange={(e) => handleMediaInfo(e.target.value, i)}
+                        as="textarea"
+                        placeholder="Описание"
+                      />
                     </Col>
                     <Col xs={4}>
                       <div>Фото {i + 1}</div>

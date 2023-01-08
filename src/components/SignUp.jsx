@@ -58,7 +58,7 @@ export default function SignUp(props) {
     <Row>
       <Col md={4} className="m-auto">
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" >
             <h5>Регистрация</h5>
             <Form.Label>Логин</Form.Label>
             <Form.Control onChange={(e) => setLogin(e.target.value)} />
