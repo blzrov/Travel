@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Travel.less";
 
 import { useLocation } from "react-router-dom";
@@ -12,7 +12,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+import { LoginContext } from "../App";
+
 export default function Travel() {
+  const loginContext = useContext(LoginContext);
   const location = useLocation();
   const [travel, setTravel] = useState();
 
@@ -21,13 +24,23 @@ export default function Travel() {
     async function doFetch() {
       const response = await fetch(`http://localhost:8080/travel/${id}`);
       const result = await response.json();
-      console.log(result);
       setTravel(result);
     }
     doFetch();
   }
   // eslint-disable-next-line
   useEffect(getTravel, []);
+
+  async function joinTravel() {
+    await fetch("http://localhost:8080/joinTravel/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ loginContext, id: travel.id }),
+    });
+    getTravel();
+  }
 
   if (travel)
     return (
@@ -61,16 +74,16 @@ export default function Travel() {
                 <b>Затраты:</b> {travel.cost} ₽
               </div>
               <div>
-                <b>Свободные места:</b> {"7 из 14"}
+                <b>Свободные места:</b> {"7 из 14 to do"}
               </div>
               <div>
                 <Button
                   className="mt-5"
-                  onClick={() => {}}
+                  onClick={joinTravel}
                   variant="success"
                   type="button"
                   size={"lg"}
-                  disabled={false}
+                  disabled={travel.canJoin}
                 >
                   Принять участие
                 </Button>

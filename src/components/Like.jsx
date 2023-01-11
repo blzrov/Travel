@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./Like.less";
 
@@ -7,11 +7,26 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { pink } from "@mui/material/colors";
 
-export default function Like({ isLiked }) {
+import { LoginContext } from "../App";
+
+export default function Like({ isLiked, id }) {
+  const loginContext = useContext(LoginContext);
+
   const [isLike, setIsLike] = useState(isLiked);
 
+  async function onClick() {
+    setIsLike((prev) => !prev);
+    await fetch("http://localhost:8080/setFavorite/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ loginContext, id }),
+    });
+  }
+
   return (
-    <div onClick={() => setIsLike(!isLike)} className="like-svg">
+    <div onClick={onClick} className="like-svg">
       {isLike ? (
         <FavoriteIcon sx={{ color: pink[500] }} />
       ) : (

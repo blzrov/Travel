@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+import { LoginContext } from "../App";
+
 export default function Favorites() {
+  const loginContext = useContext(LoginContext);
   // eslint-disable-next-line
   const [travels, setTravels] = useState([]);
 
   useEffect(() => {
     async function getFavorites() {
-      const response = await fetch("http://localhost:8080/favorites/1");
+      const response = await fetch(
+        `http://localhost:8080/favorites/${loginContext}`
+      );
       const result = await response.json();
+      console.log(result);
       setTravels(result);
     }
     getFavorites();
+    // eslint-disable-next-line
   }, []);
 
   return (
