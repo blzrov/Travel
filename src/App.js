@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 import "./App.less";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,6 +23,14 @@ function App() {
   const [login, setLogin] = useState(
     () => localStorage.getItem("login") || null
   );
+
+  useEffect(() => {
+    document.addEventListener("wheel", function (event) {
+      if (document.activeElement.type === "number") {
+        document.activeElement.blur();
+      }
+    });
+  });
 
   return (
     <div className="App">

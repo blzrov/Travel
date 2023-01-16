@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Card from "./Card";
 import ModalCheckList from "./ModalCheckList";
 
+import { LoginContext } from "../App";
+
 export default function FutureTravels() {
+  const loginContext = useContext(LoginContext);
   const [modalShow, setModalShow] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [travels, setTravels] = useState([]);
@@ -17,6 +20,7 @@ export default function FutureTravels() {
       longMax: null,
       costMin: null,
       costMax: null,
+      login: loginContext,
     };
     async function doSearch() {
       const response = await fetch("http://localhost:8080/search", {
@@ -39,7 +43,11 @@ export default function FutureTravels() {
       {travels.map((e, i) => {
         return (
           <div key={i} className="my-3">
-            <Card travel={e} setModalShow={setModalShow} setSelectedId={setSelectedId} />
+            <Card
+              travel={e}
+              setModalShow={setModalShow}
+              setSelectedId={setSelectedId}
+            />
           </div>
         );
       })}

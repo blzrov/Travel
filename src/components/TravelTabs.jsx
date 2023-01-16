@@ -5,7 +5,7 @@ import Comment from "./Comment";
 import ListPeople from "./ListPeople";
 import ListItems from "./ListItems";
 
-export default function TravelTabs() {
+export default function TravelTabs({ travel }) {
   return (
     <Tabs
       defaultActiveKey="comments"
@@ -20,10 +20,10 @@ export default function TravelTabs() {
         <TravelAccordion />
       </Tab>
       <Tab eventKey="party" title="Участники">
-        <ListPeople />
+        <ListPeople members={travel.members} />
       </Tab>
       <Tab eventKey="other" title="Взять с собой">
-        <ListItems />
+        <ListItems items={travel.items} />
       </Tab>
     </Tabs>
   );

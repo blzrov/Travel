@@ -2,11 +2,12 @@ import React from "react";
 
 import Form from "react-bootstrap/Form";
 
-export default function PickRegion({ onChange }) {
+export default function PickRegion({ value, onChange }) {
   const regions = require("../files/regions.json");
 
   return (
     <Form.Select
+      value={value}
       onChange={onChange}
       aria-label="Default select example"
     >

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Card from "./Card";
-
 import ModalReview from "./ModalReview";
 
+import { LoginContext } from "../App";
+
 export default function HistoryTravels() {
+  const loginContext = useContext(LoginContext);
   const [modalShow, setModalShow] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [travels, setTravels] = useState([]);
@@ -18,6 +20,7 @@ export default function HistoryTravels() {
       longMax: null,
       costMin: null,
       costMax: null,
+      login: loginContext,
     };
     async function doSearch() {
       const response = await fetch("http://localhost:8080/search", {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,7 +9,10 @@ import PickDate from "../components/PickDate";
 import PickRegion from "../components/PickRegion";
 import Card from "../components/Card";
 
+import { LoginContext } from "../App";
+
 export default function Search() {
+  const loginContext = useContext(LoginContext);
   const [travels, setTravels] = useState([]);
   const [settings, setSettings] = useState({
     region: "",
@@ -19,6 +22,7 @@ export default function Search() {
     longMax: null,
     costMin: null,
     costMax: null,
+    login: loginContext,
   });
 
   function handleSettings(k, value) {
@@ -37,6 +41,7 @@ export default function Search() {
         body: JSON.stringify(settings),
       });
       const result = await response.json();
+      console.log(result);
       setTravels(result);
     }
     doSearch();

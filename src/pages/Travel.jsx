@@ -22,8 +22,11 @@ export default function Travel() {
   function getTravel() {
     const id = location.pathname.split("/").pop();
     async function doFetch() {
-      const response = await fetch(`http://localhost:8080/travel/${id}`);
+      const response = await fetch(
+        `http://localhost:8080/travel/${id}?login=${loginContext}`
+      );
       const result = await response.json();
+      console.log(result);
       setTravel(result);
     }
     doFetch();
@@ -49,7 +52,7 @@ export default function Travel() {
           <Col sm={12} md={6}>
             <div className="travel-img-wrapper">
               <div className="img-travel-bg"></div>
-              <Like />
+              <Like isLiked={travel.isFavorite} id={travel.id} />
               <div className="img-travel-content">
                 <h3>{travel.place}</h3>
                 <div>{travel.placeDescription}</div>
@@ -74,7 +77,9 @@ export default function Travel() {
                 <b>Затраты:</b> {travel.cost} ₽
               </div>
               <div>
-                <b>Свободные места:</b> {"7 из 14 to do"}
+                <b>Свободные места:</b> {travel.seats - travel.seatsIsTaken}
+                {" из "}
+                {travel.seats}
               </div>
               <div>
                 <Button
@@ -83,9 +88,19 @@ export default function Travel() {
                   variant="success"
                   type="button"
                   size={"lg"}
-                  disabled={travel.canJoin}
+                  disabled={
+                    !travel.canJoin ||
+                    travel.organizer == loginContext ||
+                    travel.members.filter((e) => e.login == loginContext)
+                      .length > 0
+                  }
                 >
-                  Принять участие
+                  {travel.members.filter((e) => e.login == loginContext)
+                    .length > 0
+                    ? "Вы уже записались"
+                    : travel.organizer == loginContext
+                    ? "Вы организатор"
+                    : "Принять участие"}
                 </Button>
               </div>
             </div>
@@ -96,8 +111,8 @@ export default function Travel() {
           <Col>
             <h2>{travel.name}</h2>
             <p>{travel.description}</p>
-            <Gallery />
-            <TravelTabs />
+            <Gallery media={travel.media} />
+            <TravelTabs travel={travel} />
           </Col>
         </Row>
       </div>

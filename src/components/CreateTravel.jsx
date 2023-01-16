@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -12,6 +14,7 @@ import { LoginContext } from "../App";
 
 export default function Organizers() {
   const loginContext = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const [settings, setSettings] = useState({
     region: "",
@@ -65,7 +68,7 @@ export default function Organizers() {
       body: JSON.stringify(travel),
     });
     const result = await response.json();
-    console.log(result);
+    navigate(`/Search/${result}`);
   };
 
   return (
