@@ -53,8 +53,8 @@ export default function Travels() {
           <Tab label="Архив" />
         </Tabs>
       </Box>
-      {value === 0 && <FutureTravels />}
-      {value === 1 && <HistoryTravels />}
+      {value === 0 && <FutureTravels travels={travels} />}
+      {value === 1 && <HistoryTravels travels={travels} />}
     </div>
   );
 }

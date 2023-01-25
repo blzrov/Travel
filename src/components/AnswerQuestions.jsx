@@ -32,7 +32,7 @@ export default function AnswerQuestions() {
     doSearch();
   }
   // eslint-disable-next-line
-  useEffect(onSubmit, []);
+  // useEffect(onSubmit, []);
 
   return (
     <div>

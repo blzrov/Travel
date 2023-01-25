@@ -5,38 +5,10 @@ import ModalCheckList from "./ModalCheckList";
 
 import { LoginContext } from "../App";
 
-export default function FutureTravels() {
-  const loginContext = useContext(LoginContext);
+export default function FutureTravels({ travels }) {
   const [modalShow, setModalShow] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
-  const [travels, setTravels] = useState([]);
-
-  function onSubmit() {
-    const obj = {
-      region: null,
-      start: null,
-      finish: null,
-      longMin: null,
-      longMax: null,
-      costMin: null,
-      costMax: null,
-      login: loginContext,
-    };
-    async function doSearch() {
-      const response = await fetch("http://localhost:8080/search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(obj),
-      });
-      const result = await response.json();
-      setTravels(result);
-    }
-    doSearch();
-  }
-  // eslint-disable-next-line
-  useEffect(onSubmit, []);
+  const [itemsModal, setItemsModal] = useState([]);
+  const [selectedID, setSelectedId] = useState([null]);
 
   return (
     <div>
@@ -47,6 +19,7 @@ export default function FutureTravels() {
               travel={e}
               setModalShow={setModalShow}
               setSelectedId={setSelectedId}
+              setItemsModal={setItemsModal}
             />
           </div>
         );
@@ -54,7 +27,8 @@ export default function FutureTravels() {
       <ModalCheckList
         modalShow={modalShow}
         setModalShow={setModalShow}
-        selectedId={selectedId}
+        selectedID={selectedID}
+        items={itemsModal}
       />
     </div>
   );

@@ -97,7 +97,7 @@ export default function Travel() {
                 >
                   {travel.members.filter((e) => e.login == loginContext)
                     .length > 0
-                    ? "Вы уже записались"
+                    ? "Вы записаны, ура!"
                     : travel.organizer == loginContext
                     ? "Вы организатор"
                     : "Принять участие"}

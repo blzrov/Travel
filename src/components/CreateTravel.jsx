@@ -51,6 +51,7 @@ export default function Organizers() {
     setMedia((prev) => {
       const media = [...prev];
       media[i].info = value;
+      media[i].url = "";
       return media;
     });
   }
@@ -68,6 +69,7 @@ export default function Organizers() {
       body: JSON.stringify(travel),
     });
     const result = await response.json();
+    console.log(result)
     navigate(`/Search/${result}`);
   };
 

@@ -12,7 +12,9 @@ export default function ModalCheckList({
   modalShow,
   setModalShow,
   selectedId,
+  items,
 }) {
+  console.log(items)
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (value) => () => {
@@ -41,7 +43,7 @@ export default function ModalCheckList({
       </Modal.Header>
       <Modal.Body>
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-          {["Лыжи", "Авто", "Очки"].map((value) => {
+          {items.map((value) => {
             return (
               <ListItem key={value} disablePadding>
                 <ListItemButton onClick={handleToggle(value)} dense>

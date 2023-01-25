@@ -5,38 +5,10 @@ import ModalReview from "./ModalReview";
 
 import { LoginContext } from "../App";
 
-export default function HistoryTravels() {
+export default function HistoryTravels({ travels }) {
   const loginContext = useContext(LoginContext);
   const [modalShow, setModalShow] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const [travels, setTravels] = useState([]);
-
-  function onSubmit() {
-    const obj = {
-      region: null,
-      start: null,
-      finish: null,
-      longMin: null,
-      longMax: null,
-      costMin: null,
-      costMax: null,
-      login: loginContext,
-    };
-    async function doSearch() {
-      const response = await fetch("http://localhost:8080/search", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(obj),
-      });
-      const result = await response.json();
-      setTravels(result);
-    }
-    doSearch();
-  }
-  // eslint-disable-next-line
-  useEffect(onSubmit, []);
 
   return (
     <div>
@@ -52,6 +24,7 @@ export default function HistoryTravels() {
         );
       })}
       <ModalReview
+        login={loginContext}
         modalShow={modalShow}
         setModalShow={setModalShow}
         selectedId={selectedId}

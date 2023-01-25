@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function TravelAccordion() {
+  const [question, setQuestion] = React.useState("");
   return (
     <div>
       <Accordion>
@@ -16,12 +17,11 @@ export default function TravelAccordion() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Вопрос 1</Typography>
+          <Typography>Можно ли в поход пенсионерам?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Нет, к сожалению этот поход слишком экстримальный
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -31,21 +31,28 @@ export default function TravelAccordion() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Вопрос 2</Typography>
+          <Typography>Почему так дешево?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Из затрат только деньги на еду и минимальные сборы
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Form className="mt-3">
         <Form.Group className="mb-2">
           <Form.Label>Остались вопросы?</Form.Label>
-          <Form.Control />
+          <Form.Control
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+          />
         </Form.Group>
-        <Button variant="primary" type="button" size="sm">
+        <Button
+          onClick={() => setQuestion("")}
+          variant="primary"
+          type="button"
+          size="sm"
+        >
           Спросить
         </Button>
       </Form>

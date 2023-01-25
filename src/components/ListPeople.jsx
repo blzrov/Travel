@@ -28,7 +28,7 @@ export default function ListPeople({ members }) {
                   >
                     О себе
                   </Typography>
-                  {" — " + e.login + "…"}
+                  {" — " + e.about + "…"}
                 </React.Fragment>
               }
             />

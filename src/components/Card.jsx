@@ -11,7 +11,13 @@ import Like from "./Like";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function MyCard({ travel, setModalShow, setSelectedId }) {
+export default function MyCard({
+  travel,
+  setModalShow,
+  setSelectedId,
+  setItemsModal,
+}) {
+  console.log(travel);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -83,6 +89,7 @@ export default function MyCard({ travel, setModalShow, setSelectedId }) {
           moment().isBefore(moment(travel.start)) && (
             <Button
               onClick={() => {
+                setItemsModal(travel.items);
                 setSelectedId(travel.id);
                 setModalShow(true);
               }}

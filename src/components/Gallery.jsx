@@ -8,11 +8,7 @@ export default function Gallery({ media }) {
     <Carousel interval={null}>
       {media.map((e, i) => (
         <Carousel.Item key={i}>
-          <img
-            className="d-block w-100 gallery-img"
-            src={require("../img/altai.jpg")}
-            alt={e.info}
-          />
+          <img className="d-block w-100 gallery-img" src={e.url} alt={e.info} />
           <Carousel.Caption>
             <p>{e.info}</p>
           </Carousel.Caption>

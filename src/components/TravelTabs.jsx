@@ -14,7 +14,7 @@ export default function TravelTabs({ travel }) {
       fill
     >
       <Tab eventKey="comments" title="Отзывы">
-        <Comment />
+        <Comment reviews={travel.reviews} />
       </Tab>
       <Tab eventKey="faq" title="Ответы на вопросы">
         <TravelAccordion />
