@@ -43,6 +43,12 @@ export default function Search() {
       const result = await response.json();
       console.log(result);
       setTravels(result);
+
+      const response2 = await fetch(
+        "http://localhost:8080/getFullUser/belozerov"
+      );
+      const result2 = await response2.json();
+      console.log(result2);
     }
     doSearch();
   }
