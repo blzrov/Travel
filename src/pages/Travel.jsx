@@ -11,6 +11,7 @@ import TravelTabs from "../components/TravelTabs";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 import { LoginContext } from "../App";
 
@@ -18,6 +19,7 @@ export default function Travel() {
   const loginContext = useContext(LoginContext);
   const location = useLocation();
   const [travel, setTravel] = useState();
+  const [modalShow, setModalShow] = useState(false);
 
   function getTravel() {
     const id = location.pathname.split("/").pop();
@@ -102,6 +104,22 @@ export default function Travel() {
                     ? "Вы организатор"
                     : "Принять участие"}
                 </Button>
+                {travel.organizer === loginContext && (
+                  <Button
+                    onClick={() => setModalShow(true)}
+                    className="ms-2 mt-5"
+                    variant="info"
+                    type="button"
+                    size={"lg"}
+                  >
+                    Информация для организатора
+                  </Button>
+                )}
+                <MyVerticallyCenteredModal
+                  data={travel.members}
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
               </div>
             </div>
           </Col>
@@ -117,4 +135,30 @@ export default function Travel() {
         </Row>
       </div>
     );
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Участники</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {props.data.map((e, i) => (
+          <div key={i} className="mb-2">
+            <div>{e.name + " " + e.surname}</div>
+            <div>{e.num}</div>
+          </div>
+        ))}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Закрыть</Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
