@@ -53,7 +53,10 @@ export default function Travel() {
         <Row>
           <Col sm={12} md={6}>
             <div className="travel-img-wrapper">
-              <div className="img-travel-bg"></div>
+              <div
+                style={{ backgroundImage: `url(${travel.media[0].url})` }}
+                className="img-travel-bg"
+              ></div>
               <Like isLiked={travel.isFavorite} id={travel.id} />
               <div className="img-travel-content">
                 <h3>{travel.place}</h3>
