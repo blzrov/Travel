@@ -90,15 +90,15 @@ export default function Travel() {
                   size={"lg"}
                   disabled={
                     !travel.canJoin ||
-                    travel.organizer == loginContext ||
-                    travel.members.filter((e) => e.login == loginContext)
+                    travel.organizer === loginContext ||
+                    travel.members.filter((e) => e.login === loginContext)
                       .length > 0
                   }
                 >
-                  {travel.members.filter((e) => e.login == loginContext)
+                  {travel.members.filter((e) => e.login === loginContext)
                     .length > 0
                     ? "Вы записаны, ура!"
-                    : travel.organizer == loginContext
+                    : travel.organizer === loginContext
                     ? "Вы организатор"
                     : "Принять участие"}
                 </Button>

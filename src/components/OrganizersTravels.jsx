@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import Card from "./Card";
 
@@ -8,6 +8,7 @@ export default function OrganizersTravels() {
   const loginContext = useContext(LoginContext);
   const [travels, setTravels] = useState([]);
 
+  // eslint-disable-next-line
   function getOrganizersTravels() {
     async function doSearch() {
       const response = await fetch(

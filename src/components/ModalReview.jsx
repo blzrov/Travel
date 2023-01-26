@@ -22,6 +22,7 @@ export default function ModalReview({
     });
     const result = await response.json();
     setModalShow(false);
+    console.log(result)
   };
 
   return (

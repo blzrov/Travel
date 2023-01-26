@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useState, useEffect } from "react";
 
 import Card from "./Card";
@@ -8,6 +9,7 @@ export default function AnswerQuestions() {
   const [selectedId, setSelectedId] = useState(null);
   const [travels, setTravels] = useState([]);
 
+  // eslint-disable-next-line
   function onSubmit() {
     const obj = {
       region: null,

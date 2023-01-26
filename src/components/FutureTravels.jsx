@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState,   } from "react";
 
 import Card from "./Card";
 import ModalCheckList from "./ModalCheckList";
-
-import { LoginContext } from "../App";
 
 export default function FutureTravels({ travels }) {
   const [modalShow, setModalShow] = useState(false);

@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 export default function Comment({ reviews }) {
   return (
     <>
-      {reviews.length == 0 && (
+      {reviews.length === 0 && (
         <Card className="mb-4">
           <Card.Header> </Card.Header>
           <Card.Body>
